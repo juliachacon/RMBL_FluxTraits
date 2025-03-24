@@ -10,10 +10,6 @@ library(readr)
 rmbl_trait <- read.csv("./data/raw/rmbl_trait_data_master.csv")
 rmbl_trait <- as_tibble(rmbl_trait)
 
-# Read species dictionary
-
-load("./data/raw/species_dictionary_RMBL_2005_2019.Rdata")
-
 # Subset relevant columns, clean block factor, remove rows with NA species, replace block4 by Block4
 
 traits_sbs <- rmbl_trait %>% 
