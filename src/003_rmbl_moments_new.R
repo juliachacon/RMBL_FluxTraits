@@ -73,8 +73,8 @@ rmbl_moments <- rmbl_moments %>%
   mutate(year = sapply(site_year, function(x) str_split(x, "_")[[1]][2]))
 
 ## Save outputs
-saveRDS(object = rmbl_moments, file = "./clean data/rmbl_moments_updated.rds")
-saveRDS(object = imputed_traits, file = "./clean data/rmbl_imputed_traits_updated.rds")
+saveRDS(object = rmbl_moments, file = here("data/processed", "rmbl_moments_updated.rds"))
+saveRDS(object = imputed_traits, file = here("data/processed", "rmbl_imputed_traits_updated.rds"))
 
 ## Print session info for reproducibility
 sessionInfo()
