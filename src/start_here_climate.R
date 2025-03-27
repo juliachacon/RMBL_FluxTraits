@@ -105,10 +105,6 @@ climate_data4 <- climate_data3 %>%
 # Save final dataset
 saveRDS(climate_data4, file = "./data/processed/climate_data_full_2.rds")
 
-
-
-
-
 # datos de julia: prism (da menos resolucion, pq el pixel es grande)
 #
 # datos climaticos de cesar: daymet
