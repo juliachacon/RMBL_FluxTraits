@@ -2,7 +2,6 @@
 ## Preparing C Fluxes Datasets across RMBL gradient
 ## Original by Julia, improved March 24th 2025
 
-
 # Load packages
 library(tidyverse)
 library(here)
@@ -21,7 +20,6 @@ source(here("scr", "start_here_climate_3.R"), echo = TRUE)
 load(here("data/processed", "nee_sum_curated.Rdata"))
 nee <- as_tibble(nee_sum)
 
-
 # Calculate mean NEE for each site, year, plot, and time
 mean_nee <- nee %>%
   group_by(site, year, plot, time) %>%
@@ -33,7 +31,6 @@ NEE <- mean_nee %>% filter(time == "day") %>% rename(nee = nee_lm_mean)
 dayresp <- mean_nee %>% filter(time == "dayresp") %>% rename(reco_day = nee_lm_mean)
 
 nightresp <- mean_nee %>% filter(time == "nightresp") %>% rename(reco_night = nee_lm_mean)
-
 
 # Calculate GPP (Gross Primary Production)
 cfluxes_day <- left_join(dayresp, NEE, by = c("site", "year", "plot")) %>%
