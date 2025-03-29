@@ -81,3 +81,10 @@ print(pca_clim_plot)
 # ---- Prepare PCA scores for downstream use ----
 pcscores_clim <- df_out[, 1:2] %>%
   rename(PC1clim = PC1, PC2clim = PC2)
+
+
+# usar PCAs ejes para clima y traits
+# usar elevation como factor fijo y año como aleatorio
+# los años no son independientes entre sí
+# elevacion como factor fijo: porque podría estar difiriendo entre ellos por cosas que no estén considerados en el clima.
+# luego ver colinearidad en los predictores. Si la altitud tiene mucha collinearidad, la quito. Si no, la dejo. Porque puede ser colineal con las variables climaticas.
