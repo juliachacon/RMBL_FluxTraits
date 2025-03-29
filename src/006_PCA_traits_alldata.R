@@ -8,7 +8,6 @@ library(ggplot2)
 # ---- Source helper functions ----
 source(here("src", "tbl_to_com.R"), echo=TRUE)
 source(here("src", "mitema.PCA.R"), echo=TRUE)
-load(here("data/processed", "cfluxes_night_clean.rds"))
 cfluxes_night <- readRDS("~/GitHub/2025/RMBL_FluxTraits/data/processed/cfluxes_night_clean.rds")
 
 # ---- Prepare identifiers ----
