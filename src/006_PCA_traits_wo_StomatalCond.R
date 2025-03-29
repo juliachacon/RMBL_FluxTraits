@@ -11,7 +11,7 @@ library(here)
 # source table to community and mytheme to PCA plots
 source(here("src", "tbl_to_com.R"), echo=TRUE)
 source(here("src", "mitema.PCA.R"), echo=TRUE)
-load(here("data/processed", "cfluxes_night_clean.rds"))
+cfluxes_night <- readRDS("~/GitHub/2025/RMBL_FluxTraits/data/processed/cfluxes_night_clean.rds")
 
 # ---- Prepare Data ----
 
