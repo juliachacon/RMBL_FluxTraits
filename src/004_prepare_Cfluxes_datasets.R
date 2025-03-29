@@ -67,20 +67,25 @@ cfluxes_day <- filter_common(cfluxes_day)
 # Remove positive respiration values
 cfluxes_night <- cfluxes_night %>% filter(reco_night < 0)
 
-# Merge with trait moments and climate data
-cfluxes_day <- left_join(cfluxes_day, moments, by = c("site", "year", "plot"))
-cfluxes_night <- left_join(cfluxes_night, moments, by = c("site", "year", "plot"))
+# Remove elevation_m to avoid column duplication during joins
+moments_clean <- moments %>% select(-elevation_m)
 
-cfluxes_day <- left_join(cfluxes_day, climate_data4, by = c("site", "year"))
-cfluxes_night <- left_join(cfluxes_night, climate_data4, by = c("site", "year"))
+# Merge with trait moments and climate data
+cfluxes_day <- cfluxes_day %>%
+  left_join(moments_clean, by = c("site", "year", "plot")) %>%
+  left_join(climate_data4, by = c("site", "year"))
+
+cfluxes_night <- cfluxes_night %>%
+  left_join(moments_clean, by = c("site", "year", "plot")) %>%
+  left_join(climate_data4, by = c("site", "year"))
 
 
 # Remove rows with missing key trait values
 cfluxes_night <- cfluxes_night %>% drop_na(percent_P, delta13C)
 
-
 # Save outputs
 saveRDS(cfluxes_night, here("data/processed", "cfluxes_night_clean.rds"))
+
 saveRDS(cfluxes_day, here("data/processed", "cfluxes_day_clean.rds"))
 
 
