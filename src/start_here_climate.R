@@ -46,7 +46,7 @@ mean_climate_gs <- env.month.subset %>%
             ppt_mm_gs = mean(ppt_mm))
 
 # Merge climate growing season summaries
-climate_data <- mean_tmean_gs
+climate_data <- mean_climate_gs
 climate_data$elev <- NULL
 
 # Join annual env data
@@ -122,3 +122,4 @@ saveRDS(climate_data4, file = "./data/processed/climate_data_full_2.rds")
 # 
 
 ##
+
